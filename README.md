@@ -1,5 +1,7 @@
 # knoop
 
+Thinking substrate, not agent memory.
+
 ## What it is
 
 Knoop is a personal knowledge graph exposed over MCP. The name is Dutch
