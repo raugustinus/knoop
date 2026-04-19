@@ -1,0 +1,16 @@
+INSERT OR IGNORE INTO edge_types (name, status, description, domain_kind, range_kind, symmetric) VALUES
+  ('said',            'stable', 'Person made this statement',              'person',   'fragment', 0),
+  ('advised_on',      'stable', 'Person gave counsel about target',        'person',   NULL,       0),
+  ('affiliated_with', 'stable', 'Person connected to org or project',      'person',   NULL,       0),
+  ('depends_on',      'stable', 'A builds on B',                           'concept',  'concept',  0),
+  ('contrasts_with',  'stable', 'Interesting opposition',                  NULL,       NULL,       1),
+  ('instance_of',     'stable', 'A is a kind of B',                        NULL,       'concept',  0),
+  ('supersedes',      'stable', 'A replaces B over time',                  NULL,       NULL,       0),
+  ('uses',            'stable', 'Project uses concept or tool',            'project',  NULL,       0),
+  ('part_of',         'stable', 'A belongs to larger B',                   NULL,       NULL,       0),
+  ('targets',         'stable', 'Project aims at domain',                  'project',  NULL,       0),
+  ('mentions',        'stable', 'Fragment references token',               'fragment', NULL,       0),
+  ('quotes',          'stable', 'Fragment quotes person directly',         'fragment', 'person',   0),
+  ('contradicts',     'stable', 'Fragment A contradicts B',                'fragment', 'fragment', 0),
+  ('elaborates',      'stable', 'Fragment A expands on B',                 'fragment', 'fragment', 0),
+  ('relates_to',      'stable', 'Escape hatch, free-text note in data',    NULL,       NULL,       0);
