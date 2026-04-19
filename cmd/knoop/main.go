@@ -1,5 +1,5 @@
 // Copyright (C) 2026 Rob Augustinus
-// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-License-Identifier: MIT
 
 package main
 
@@ -13,12 +13,14 @@ import (
 
 	"github.com/raugustinus/knoop/internal/mcpserver"
 	"github.com/raugustinus/knoop/internal/store"
+	"github.com/raugustinus/knoop/internal/web"
 )
 
 func main() {
 	name := flag.String("name", "default", "graph name (selects DB file)")
 	dbPath := flag.String("db", "", "explicit DB path (overrides -name)")
 	author := flag.String("author", defaultAuthor(), "author recorded on each fragment")
+	httpAddr := flag.String("http", "", "serve graph viewer on addr (e.g. :8080); if set, stdio MCP is disabled")
 	flag.Parse()
 
 	path := *dbPath
@@ -35,6 +37,13 @@ func main() {
 		log.Fatalf("open db: %v", err)
 	}
 	defer s.Close()
+
+	if *httpAddr != "" {
+		if err := web.Serve(*httpAddr, s); err != nil {
+			log.Fatalf("serve http: %v", err)
+		}
+		return
+	}
 
 	srv := mcpserver.New(s)
 	if err := server.ServeStdio(srv); err != nil {

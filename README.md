@@ -93,10 +93,9 @@ atomically, or not at all.
 
 ## License
 
-Knoop is licensed under the GNU General Public License v3.0 or later.
-See [LICENSE](LICENSE) for the full text. If you extend knoop, your
-extensions must also be GPL-licensed — the idea is that improvements
-to a thinking tool should flow back to everyone who thinks with it.
+Knoop is MIT licensed — see [LICENSE](LICENSE). Fork it, embed it,
+ship it commercially, keep your changes private: all fine. A mention
+is appreciated but not required.
 
 ## Roadmap
 
