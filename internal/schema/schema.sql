@@ -64,3 +64,13 @@ CREATE TABLE IF NOT EXISTS fragment_tokens (
 );
 
 CREATE INDEX IF NOT EXISTS fragment_tokens_token ON fragment_tokens(token_id);
+
+CREATE TABLE IF NOT EXISTS deliveries (
+  fragment_id  INTEGER NOT NULL REFERENCES fragments(id) ON DELETE CASCADE,
+  target       TEXT NOT NULL,
+  target_norm  TEXT NOT NULL,
+  delivered_at INTEGER NOT NULL DEFAULT (unixepoch()),
+  PRIMARY KEY (fragment_id, target_norm)
+);
+
+CREATE INDEX IF NOT EXISTS deliveries_target ON deliveries(target_norm, delivered_at);

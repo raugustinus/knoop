@@ -16,5 +16,7 @@ func New(s *store.Store) *server.MCPServer {
 		server.WithToolCapabilities(false),
 	)
 	RegisterCaptureTool(srv, s)
+	RegisterSearchTool(srv, s)
+	RegisterInboxTool(srv, s)
 	return srv
 }
